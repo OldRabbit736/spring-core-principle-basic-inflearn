@@ -12,18 +12,18 @@ public class BeanLifeCycleTest {
     @Test
     public void lifeCycleTest() {
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
-        NetworkClient client = ac.getBean(NetworkClient.class);
-        System.out.println("B");
-        ac.close();
+//        NetworkClient client = ac.getBean(NetworkClient.class);
+//        System.out.println("B");
+//        ac.close();
     }
 
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean(initMethod = "init", destroyMethod = "close")
+//        @Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient("http://hello-spring.dev");
-//            networkClient.setUrl("http://hello-spring.dev");
             System.out.println("A");
             return networkClient;
         }
